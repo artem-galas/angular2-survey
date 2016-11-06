@@ -1,12 +1,31 @@
 <md-card class="sign-up">
   <md-toolbar color="primary">Sign Up</md-toolbar>
   <md-card-content>
-    <form class="sign-up">
-      <md-input placeholder="First name"></md-input>
-      <md-input placeholder="User name"></md-input>
-      <md-input type="email" placeholder="Email"></md-input>
-      <md-input type="password" minlength="6" placeholder="Password"></md-input>
-      <md-input type="password" minlength="6" placeholder="Password Confirmation"></md-input>
+    <form [formGroup]="signUpForm" class="sign-up" (ngSubmit)="signUp(signUpForm)" >
+      <md-input formControlName="fullName" placeholder="Full name">
+        <md-hint *ngIf="signUpForm.hasError('required','fullName') && formSubmitted"
+                 [ngStyle]="{'color': 'red'}"
+                 align="start">Full name is required</md-hint>
+      </md-input>
+      <md-input formControlName="userName" placeholder="User name">
+        <md-hint *ngIf="signUpForm.hasError('required','userName') && formSubmitted"
+                 [ngStyle]="{'color': 'red'}"
+                 align="start">User name is required</md-hint>
+      </md-input>
+      <md-input formControlName="email" type="email" placeholder="Email">
+        <!--<md-hint *ngIf="signUpForm.hasError('required','email')" [ngStyle]="{'color': 'red'}" align="start">Email is required</md-hint>-->
+        <md-hint *ngIf="signUpForm.hasError('pattern','email') && formSubmitted"
+                 [ngStyle]="{'color': 'red'}"
+                 align="start">example@mail.com</md-hint>
+      </md-input>
+      <div formGroupName="passwordGroup">
+        <md-input formControlName="password" type="password" placeholder="Password">
+          <!--<md-hint *ngIf="signUpForm.hasError('required','password')" [ngStyle]="{'color': 'red'}" align="start">Password is required</md-hint>-->
+        </md-input>
+        <md-input formControlName="passwordConfirmation" type="password" placeholder="Password Confirmation">
+          <!--<md-hint *ngIf="passwordGroup.hasError('equal','passwordConfirmation')" [ngStyle]="{'color': 'red'}" align="start">Password Confirmation must equal with password</md-hint>-->
+        </md-input>
+      </div>
       <button md-raised-button color="primary">Sign Up</button>
       <p class="bottom-form-text">
         Do you have account?

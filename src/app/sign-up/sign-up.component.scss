@@ -12,6 +12,9 @@ form.sign-up {
   md-input, button {
     width: 100%;
   }
+  md-input.ng-invalid {
+
+  }
   .bottom-form-text {
     margin-top: 5px;
     margin-bottom: 0;
