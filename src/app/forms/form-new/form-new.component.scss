@@ -1,0 +1,9 @@
+md-card.question {
+  margin: 20px;
+  .question-text {
+    width: 72%;
+  }
+  .question-type {
+    width: calc(99% - 72%);
+  }
+}

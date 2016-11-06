@@ -1,0 +1,20 @@
+<section>
+  <h2>Create Form</h2>
+
+  <form>
+    <md-card class="question">
+      <md-input class="question-text" placeholder="Please type a question"></md-input>
+      <!--TODO Add [(ngModel)] to the Select-->
+      <select class="question-type">
+        <option>Please select a question type</option>
+        <optgroup *ngFor="let type of questionsType" [label]="type.type">
+          <option *ngFor="let subType of type.subTypes" [value]="subType">
+            {{subType | uppercase}}
+          </option>
+        </optgroup>
+      </select>
+      <md-input class="input-block" disabled value="Short answer"></md-input>
+    </md-card>
+  </form>
+
+</section>

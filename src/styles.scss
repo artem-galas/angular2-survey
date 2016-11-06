@@ -19,3 +19,8 @@ app-root {
 .md-button-wrapper > * {
   vertical-align: middle;
 }
+
+md-input.input-block {
+  display: block;
+  width: 100%;
+}
