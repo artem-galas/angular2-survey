@@ -1,0 +1,18 @@
+<md-card class="sign-up">
+  <md-toolbar color="primary">Sign Up</md-toolbar>
+  <md-card-content>
+    <form class="sign-up">
+      <md-input placeholder="First name"></md-input>
+      <md-input placeholder="User name"></md-input>
+      <md-input type="email" placeholder="Email"></md-input>
+      <md-input type="password" minlength="6" placeholder="Password"></md-input>
+      <md-input type="password" minlength="6" placeholder="Password Confirmation"></md-input>
+      <button md-raised-button color="primary">Sign Up</button>
+      <p class="bottom-form-text">
+        Do you have account?
+        Please <a [routerLink]="['/sign-in']">Sign In</a>
+      </p>
+    </form>
+  </md-card-content>
+</md-card>
+
