@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 export class SignUpComponent {
 
   public signUpForm: FormGroup;
-  public formSubmitted: boolean;
+  public formSubmitted: boolean = false;
 
   constructor(private _fb:FormBuilder) {
     this.signUpForm = _fb.group({

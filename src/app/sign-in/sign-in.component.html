@@ -1,9 +1,17 @@
 <md-card class="sign-in">
   <md-toolbar color="primary">Sign In</md-toolbar>
   <md-card-content>
-    <form class="sign-in">
-      <md-input placeholder="User name"></md-input>
-      <md-input type="password" minlength="6" placeholder="Password"></md-input>
+    <form [formGroup]="signInForm" class="sign-in" (ngSubmit)="signIn(signInForm)">
+      <md-input formControlName="userName" placeholder="User name">
+        <md-hint *ngIf="signInForm.hasError('required','userName') && formSubmitted"
+                 [ngStyle]="{'color': 'red'}"
+                 align="start">Username is required</md-hint>
+      </md-input>
+      <md-input type="password" formControlName="password" placeholder="Password">
+        <md-hint *ngIf="signInForm.hasError('required','password') && formSubmitted"
+                 [ngStyle]="{'color': 'red'}"
+                 align="start">Password is required</md-hint>
+      </md-input>
       <button md-raised-button color="primary">Sign In</button>
       <p class="bottom-form-text">
         Do you don't have account?
