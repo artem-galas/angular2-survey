@@ -17,6 +17,10 @@ nav.navbar.navbar-inverse {
   position: relative;
   padding-top: 20%;
   padding-bottom: 20%;
+  button {
+    padding: 0 70px;
+    font-size: 20px;
+  }
 }
 
 .intro-message > h1 {
@@ -35,17 +39,33 @@ nav.navbar.navbar-inverse {
 .intro-message > h3 {
   color: white;
 }
-.content-section-a {
-  padding: 50px 0;
-  background-color: #f8f8f8;
-  .note-book {
-    width: 511px;
-    height: 285px;
-    background: image-url('Laptop-with-img.png') no-repeat center center;
+
+.feature {
+  display: flex;
+  flex-direction: row;
+  padding: 30px 10px;
+
+  .image-feature {
     background-size: cover;
+    //width: 511px;
+    //height: 285px;
   }
-  .note-book-text{
-    margin-top: 60px;
+
+  .text-feature-wrapper {
+    text-align: center;
+    .title-feature {
+      font-size: 48px;
+      font-weight: 300;
+      color: #4c4c4c;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    .text-feature {
+      color: #555;
+      font-weight: 200;
+      font-size: 21px;
+      margin: 0;
+    }
   }
 }
 

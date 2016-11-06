@@ -1,11 +1,20 @@
 <section>
   <div class="intro-header">
-    <div class="container">
-      <div class="intro-message">
-        <h1>Angular2-Survey</h1>
-        <hr class="intro-divider">
-        <button md-raised-button color="primary">Join Us</button>
-      </div>
+    <div class="intro-message">
+      <h1>Angular2-Survey</h1>
+      <hr class="intro-divider">
+      <button md-raised-button color="primary">{{'Join us' | uppercase}}</button>
+    </div>
+  </div>
+</section>
+<section class="features">
+  <div class="feature"
+       *ngFor="let feature of features; let odd=odd"
+       [ngStyle]="{'background-color': odd ? '#E8EAF6': ''}">
+    <div class="image-feature" [ngStyle]="{'background-image': 'url('+feature.image+')'}"></div>
+    <div class="text-feature-wrapper">
+      <h2 class="title-feature">{{feature.title}}</h2>
+      <p class="text-feature">{{feature.text}}</p>
     </div>
   </div>
 </section>
