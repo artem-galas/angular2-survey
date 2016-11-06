@@ -1,0 +1,16 @@
+<div class="forms-list">
+  <md-card *ngFor="let form of forms">
+    <md-card-title>
+      {{form.title}}
+    </md-card-title>
+    <p class="form-description">{{form.description}}</p>
+
+    <md-card-actions align="end">
+      <button md-raised-button color="primary">Show Form</button>
+      <button md-raised-button color="warn" (click)="removeForm(form)" >Remove Form<md-icon>close</md-icon></button>
+    </md-card-actions>
+  </md-card>
+</div>
+<span class="new-form">
+   <button md-fab><md-icon>add</md-icon></button>
+</span>
