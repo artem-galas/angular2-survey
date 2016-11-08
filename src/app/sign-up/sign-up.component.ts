@@ -1,20 +1,23 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
+import {AuthService} from '../shared/services/auth.service'
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'survey-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['./sign-up.component.scss'],
+  providers: [AuthService]
 })
 export class SignUpComponent {
 
   public signUpForm: FormGroup;
   public formSubmitted: boolean = false;
 
-  constructor(private _fb:FormBuilder) {
+  constructor(private _fb:FormBuilder, private _authService: AuthService) {
     this.signUpForm = _fb.group({
       fullName: ['', Validators.required],
-      userName: ['', Validators.required],
+      userName: ['', Validators.required, this.uniqUser.bind(this)],
       email: ['', [
         Validators.required,
         Validators.pattern('.+?@.+?\\..+')]
@@ -27,6 +30,20 @@ export class SignUpComponent {
         passwordConfirmation: ['']
       }, {validator: this.equalValidator })
     });
+  }
+
+  public uniqUser(c: FormControl): Observable<any> {
+    return c.valueChanges
+      .debounceTime(500)
+      .switchMap(value => this._authService.searchUser(value))
+      .switchMap(res => {
+        console.log(res);
+        return Observable.empty();
+      })
+      .catch(err => {
+        console.log(err);
+        return Observable.empty();
+      })
   }
 
   public equalValidator({value}:FormGroup): {[key: string]: boolean} {
