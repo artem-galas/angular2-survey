@@ -1,5 +1,28 @@
 <div class="flex-container">
   <section class="container">
+
+    <form [formGroup]="formModule" (ngSubmit)="saveForm1(formModule)">
+      <div>
+        <md-input placeholder="Form Name" floatingPlaceholder="false" formControlName="name"></md-input>
+
+        <ol formArrayName="questions">
+          <li *ngFor="let question of formModule.get('questions').controls; let i = index">
+
+            <input type="text" [formControlName]="i">
+            <!--<ol formArrayName="options">-->
+              <!--<li *ngFor="let option of question.get('options').controls">-->
+                <!--<input type="text" formControlName="text">-->
+              <!--</li>-->
+              <!--<button (click)="addOption1()">Add Option</button>-->
+            <!--</ol>-->
+          </li>
+          <button type="button" (click)="addQuestion1()">Add Question</button>
+        </ol>
+
+      </div>
+      <button type="submit">Save From1</button>
+    </form>
+
     <h2>
       <md-input placeholder="Form Name" floatingPlaceholder="false" [(ngModel)]="form.name"></md-input>
     </h2>
