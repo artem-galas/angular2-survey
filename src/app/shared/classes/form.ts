@@ -2,7 +2,7 @@ import {Question} from './question';
 
 export class Form {
   name: string;
-  questions?: [Question];
+  questions?: Question[];
 
   constructor(public name: string) {}
 }

@@ -4,7 +4,7 @@ export class Question {
   type: string;
   text: string;
   image?: string;
-  options?:[Option];
+  options?: Option[];
 
   constructor(public type:string,
               public text:string){}

@@ -27,7 +27,7 @@ export class FormNewComponent {
 
   public initialQuestion = new Question('Short Answer', 'What is?');
 
-  public questions:Array<Question>=[this.initialQuestion];
+  public questions:Question[] = [this.initialQuestion];
 
   public form:Form;
 
