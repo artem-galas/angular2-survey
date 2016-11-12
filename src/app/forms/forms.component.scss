@@ -1,15 +1,7 @@
-.forms-list {
-  md-card {
-    margin: 20px;
-  }
-}
-
-.new-form {
-  display: inline-block;
-  position: fixed;
-  bottom: 36px;
-  right: 20px;
-  button {
-    color: white;
+section.container {
+  md-card.form {
+    +md-card.form{
+      margin-top: 10px;
+    }
   }
 }

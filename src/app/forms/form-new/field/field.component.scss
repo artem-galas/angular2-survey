@@ -1,0 +1,30 @@
+.checkbox-wrapper {
+  md-checkbox {
+    display: block;
+  }
+}
+
+.radio-wrapper {
+  md-radio-group {
+    md-radio-button {
+      display: block;
+    }
+  }
+}
+
+.select-wrapper {
+  ol li+li {
+    margin-top: 25px;
+  }
+  md-input {
+    display: block;
+  }
+}
+
+.date-time {
+  display: flex;
+  align-items: center;
+  md-icon {
+    color: #ccc;
+  }
+}

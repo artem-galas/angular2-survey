@@ -14,6 +14,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { FormsComponent } from './forms/forms.component';
 import { FormNewComponent } from './forms/form-new/form-new.component';
+import { FieldComponent } from './forms/form-new/field/field.component';
+import { FocusDirective } from './shared/directives/focus.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { FormNewComponent } from './forms/form-new/form-new.component';
     SignUpComponent,
     SignInComponent,
     FormsComponent,
-    FormNewComponent
+    FormNewComponent,
+    FieldComponent,
+    FocusDirective
   ],
   imports: [
     BrowserModule,

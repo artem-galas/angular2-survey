@@ -1,9 +1,19 @@
 md-card.question {
-  margin: 20px;
   .question-text {
     width: 72%;
   }
   .question-type {
     width: calc(99% - 72%);
+  }
+
+  +md-card.question {
+    margin-top: 10px;
+  }
+}
+
+.submit-button {
+  margin-top: 10px;
+  button[type='submit'] {
+    width: 100%;
   }
 }

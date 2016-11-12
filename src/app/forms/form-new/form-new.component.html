@@ -1,20 +1,30 @@
-<section>
-  <h2>Create Form</h2>
+<div class="flex-container">
+  <section class="container">
+    <h2>
+      <md-input placeholder="Form Name" floatingPlaceholder="false" [(ngModel)]="form.name"></md-input>
+    </h2>
+    <!--change to FORM-->
+    <div>
+      <md-card class="question" *ngFor="let question of questions">
+        <md-card-content>
+          <md-input class="question-text" placeholder="Please type a question" [(ngModel)]="question.text"></md-input>
+          <select class="question-type" [(ngModel)]="question.type">
+            <option>Please select a question type</option>
+            <optgroup *ngFor="let type of questionsType" [label]="type.type">
+              <option *ngFor="let subType of type.subTypes" [value]="subType">
+                {{subType | uppercase}}
+              </option>
+            </optgroup>
+          </select>
+          <survey-field [type]="question.type" [question]="question"></survey-field>
+        </md-card-content>
+      </md-card>
 
-  <form>
-    <md-card class="question">
-      <md-input class="question-text" placeholder="Please type a question"></md-input>
-      <!--TODO Add [(ngModel)] to the Select-->
-      <select class="question-type">
-        <option>Please select a question type</option>
-        <optgroup *ngFor="let type of questionsType" [label]="type.type">
-          <option *ngFor="let subType of type.subTypes" [value]="subType">
-            {{subType | uppercase}}
-          </option>
-        </optgroup>
-      </select>
-      <md-input class="input-block" disabled value="Short answer"></md-input>
-    </md-card>
-  </form>
+      <button md-raised-button (click)="addQuestion()"><md-icon>add</md-icon>Add new Question</button>
+    </div>
+  </section>
+</div>
 
-</section>
+<span class="bottom-fixed-button">
+   <button type="submit" md-fab (click)="saveForm()" color="warn"><md-icon>check</md-icon></button>
+</span>

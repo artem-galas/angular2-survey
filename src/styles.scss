@@ -24,3 +24,29 @@ md-input.input-block {
   display: block;
   width: 100%;
 }
+
+section.container {
+  width: 70%;
+}
+
+.bottom-fixed-button {
+  display: inline-block;
+  position: fixed;
+  bottom: 36px;
+  right: 20px;
+  button {
+    color: white;
+  }
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+@media(max-width: 750px) {
+  section.container {
+    width: 95%;
+  }
+}
