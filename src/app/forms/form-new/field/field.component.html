@@ -16,7 +16,6 @@
 
   <div *ngSwitchCase="'Checkboxes'" class="checkbox-wrapper">
     <md-checkbox *ngFor="let option of options; let i = index">
-      <input type="text" [surveyFocus]>
       <md-input floatingPlaceholder="false"
                 placeholder="Option {{i+1}}"
                 [(ngModel)]="option.text"
