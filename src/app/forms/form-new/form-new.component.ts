@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Question } from "../../shared/classes/question";
-import { FieldComponent } from './field/field.component';
-import { Form } from '../../shared/classes/form';
+import { FieldComponent } from '../../shared/field/field.component';
+import { Survey } from '../../shared/classes/survey';
 
 @Component({
   selector: 'survey-form-new',
@@ -29,10 +29,10 @@ export class FormNewComponent {
 
   public questions:Question[] = [this.initialQuestion];
 
-  public form:Form;
+  public form:Survey;
 
   constructor() {
-    this.form = new Form('');
+    this.form = new Survey('');
     this.form.questions = this.questions;
   }
 

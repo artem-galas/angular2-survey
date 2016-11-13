@@ -1,6 +1,7 @@
 import {Question} from './question';
 
-export class Form {
+export class Survey {
+  id?: number;
   name: string;
   questions?: Question[];
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'survey-forms',
@@ -22,7 +23,9 @@ export class FormsComponent {
     }
   ];
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+    this.forms = this.route.snapshot.data['surveys'];
+  }
 
   public removeForm(form) {
     this.forms.splice(this.forms.indexOf(form), 1);

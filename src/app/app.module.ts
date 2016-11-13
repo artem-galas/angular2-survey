@@ -15,8 +15,12 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { FormsComponent } from './forms/forms.component';
 import { FormNewComponent } from './forms/form-new/form-new.component';
-import { FieldComponent } from './forms/form-new/field/field.component';
+import { FieldComponent } from './shared/field/field.component';
 import { FocusDirective } from './shared/directives/focus.directive';
+import {SurveyService} from "./shared/services/survey.service";
+import {SurveysResolver} from "./shared/resolvers/surveys-resolver";
+import { FormShowComponent } from './forms/form-show/form-show.component';
+import {SurveyResolver} from "./shared/resolvers/survey-resolver";
 
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ import { FocusDirective } from './shared/directives/focus.directive';
     FormsComponent,
     FormNewComponent,
     FieldComponent,
-    FocusDirective
+    FocusDirective,
+    FormShowComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,12 @@ import { FocusDirective } from './shared/directives/focus.directive';
     MaterialModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [Angular2TokenService],
+  providers: [
+    Angular2TokenService,
+    SurveysResolver,
+    SurveyResolver,
+    SurveyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

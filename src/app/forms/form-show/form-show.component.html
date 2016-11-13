@@ -1,0 +1,22 @@
+<!--<pre>-->
+  <!--{{survey | json}}-->
+<!--</pre>-->
+
+<div class="flex-container">
+  <section class="container">
+    <h2>{{survey.name}}</h2>
+
+    <div>
+      <md-card class="question" *ngFor="let question of survey.questions">
+        <md-card-content>
+          <p class="question-text">{{question.text}}</p>
+          <survey-field [type]="question.type" [question]="question" [show]="true"></survey-field>
+        </md-card-content>
+      </md-card>
+    </div>
+  </section>
+</div>
+
+<span class="bottom-fixed-button">
+   <button type="submit" md-fab (click)="answerForm()" color="warn"><md-icon>send</md-icon></button>
+</span>
