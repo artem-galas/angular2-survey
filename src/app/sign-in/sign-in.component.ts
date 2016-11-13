@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import {Angular2TokenService} from 'angular2-token';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'survey-sign-in',
@@ -11,9 +13,11 @@ export class SignInComponent {
   public signInForm: FormGroup;
   public formSubmitted: boolean = false;
 
-  constructor(private _fb:FormBuilder) {
+  constructor(private _fb:FormBuilder,
+              private _tokenService:Angular2TokenService,
+              private router: Router) {
     this.signInForm = _fb.group({
-      userName: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     })
   }
@@ -21,8 +25,10 @@ export class SignInComponent {
   signIn(form) {
     this.formSubmitted = true;
     if(form.valid) {
-      //TODO Call service for auth user
-      console.log(form.value)
+      this._tokenService.signIn(
+        form.value.email,
+        form.value.password
+      ).subscribe(() => this.router.navigate(['/my-forms']));
     }
   }
 

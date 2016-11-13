@@ -2,13 +2,13 @@
   <md-toolbar color="primary">Sign Up</md-toolbar>
   <md-card-content>
     <form [formGroup]="signUpForm" class="sign-up" (ngSubmit)="signUp(signUpForm)" >
-      <md-input formControlName="fullName" placeholder="Full name">
-        <md-hint *ngIf="signUpForm.hasError('required','fullName') && formSubmitted"
+      <md-input formControlName="full_name" placeholder="Full name">
+        <md-hint *ngIf="signUpForm.hasError('required','full_name') && formSubmitted"
                  [ngStyle]="{'color': 'red'}"
                  align="start">Full name is required</md-hint>
       </md-input>
-      <md-input formControlName="userName" placeholder="User name">
-        <md-hint *ngIf="signUpForm.hasError('required','userName') && formSubmitted"
+      <md-input formControlName="username" placeholder="User name">
+        <md-hint *ngIf="signUpForm.hasError('required','username') && formSubmitted"
                  [ngStyle]="{'color': 'red'}"
                  align="start">User name is required</md-hint>
       </md-input>

@@ -17,8 +17,8 @@ export class SignUpComponent {
 
   constructor(private _fb:FormBuilder, private _authService: AuthService) {
     this.signUpForm = _fb.group({
-      fullName: ['', Validators.required],
-      userName: ['', Validators.required],
+      full_name: ['', Validators.required],
+      username: ['', Validators.required],
       email: ['', [
         Validators.required,
         Validators.pattern('.+?@.+?\\..+')]
@@ -31,55 +31,8 @@ export class SignUpComponent {
         passwordConfirmation: ['']
       }, {validator: this.equalValidator })
     });
-
-    // this.signUpForm.controls['userName'].valueChanges.debounceTime(500)
-    //   .switchMap(value => this._authService.searchUser(value))
-    //   .subscribe(res => {
-    //     console.log(res)
-    //     this.validatorSubject.next({'user-exist': true})
-    //   })
   }
 
-  public uniqUser(c: FormControl): any {
-    // return new Promise((resolve, reject)=>
-    //   this.validatorSubject.subscribe(value=>resolve(value)))
-  }
-
-  // public uniqUser(c: FormControl): Observable<any> {
-  //   return new Observable((obs:any) => {
-  //     c.valueChanges
-  //       .debounceTime(500)
-  //       .flatMap(value => this._authService.searchUser(value))
-  //       .subscribe(res => {
-  //           console.log(res);
-  //         },
-  //         error => {
-  //           console.log(`Error message ${error}`);
-  //         })
-  //   })
-
-
-    // return this._authService.searchUser(c.value)
-    //   .map(res => res.json())
-    //   .map(valid => valid ? null : {user: true})
-    //   .catch(err => {
-    //     console.log(err);
-    //     return null;
-    //   })
-
-
-    // return c.valueChanges
-    //   .debounceTime(500)
-    //   .switchMap(value => this._authService.searchUser(value))
-    //   .switchMap(res => {
-    //     console.log(res);
-    //     return Observable.empty();
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //     return Observable.empty();
-    //   })
-  // }
 
   public equalValidator({value}:FormGroup): {[key: string]: boolean} {
     const [first,...rest] = Object.keys(value || {});
@@ -90,6 +43,9 @@ export class SignUpComponent {
   public signUp(form) {
     this.formSubmitted = true;
     if (form.valid) {
+      this._authService.signUp(form.value)
+        .subscribe(()=> console.log('created'));
+
       //TODO Call service for create user
       console.log(form.value);
     }

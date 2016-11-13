@@ -2,8 +2,8 @@
   <md-toolbar color="primary">Sign In</md-toolbar>
   <md-card-content>
     <form [formGroup]="signInForm" class="sign-in" (ngSubmit)="signIn(signInForm)">
-      <md-input formControlName="userName" placeholder="User name">
-        <md-hint *ngIf="signInForm.hasError('required','userName') && formSubmitted"
+      <md-input formControlName="email" placeholder="Email">
+        <md-hint *ngIf="signInForm.hasError('required','email') && formSubmitted"
                  [ngStyle]="{'color': 'red'}"
                  align="start">Username is required</md-hint>
       </md-input>

@@ -2,5 +2,11 @@
   <span>Angular2-Survey</span>
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
-  <span>Right Aligned Text</span>
+  <div *ngIf="_tokenService.currentUserData" class="right-align-text">
+    <a [routerLink]="['/my-forms']">{{_tokenService.currentUserData?.username}}</a>
+    <span>
+      <a (click)="signOut()" ><md-icon>exit_to_app</md-icon></a>
+    </span>
+  </div>
+
 </md-toolbar>

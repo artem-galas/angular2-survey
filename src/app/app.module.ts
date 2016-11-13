@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material'
 import { RouterModule } from '@angular/router'
 import {routes} from './app.routes'
+import { Angular2TokenService } from 'angular2-token';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -38,7 +39,7 @@ import { FocusDirective } from './shared/directives/focus.directive';
     MaterialModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [Angular2TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

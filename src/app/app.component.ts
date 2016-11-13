@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import {} from './shared/footer/footer.component'
-import {} from './shared/header/header.component'
+import {FooterComponent} from './shared/footer/footer.component'
+import {HeaderComponent} from './shared/header/header.component'
+import { Angular2TokenService } from 'angular2-token';
+import {environment} from "../environments/environment";
 
 @Component({
   selector: 'app-root',
@@ -8,5 +10,10 @@ import {} from './shared/header/header.component'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+
+  constructor(private _tokenService: Angular2TokenService) {
+    this._tokenService.init({
+      apiPath: environment.API
+    });
+  }
 }
