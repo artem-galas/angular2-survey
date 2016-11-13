@@ -3,9 +3,9 @@
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
   <div *ngIf="_tokenService.currentUserData" class="right-align-text">
-    <a [routerLink]="['/my-forms']">{{_tokenService.currentUserData?.username}}</a>
+    <span [routerLink]="['/my-forms']">{{_tokenService.currentUserData?.username}}</span>
     <span>
-      <a (click)="signOut()" ><md-icon>exit_to_app</md-icon></a>
+      <span (click)="signOut()" ><md-icon>exit_to_app</md-icon></span>
     </span>
   </div>
 
