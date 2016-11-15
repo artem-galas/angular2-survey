@@ -5,5 +5,7 @@ export class Survey {
   name: string;
   questions?: Question[];
 
-  constructor(public name: string) {}
+  constructor(name: string) {
+    this.name = name
+  }
 }

@@ -7,6 +7,9 @@ export class Question {
   options?: Option[];
   answer?: any;
 
-  constructor(public type:string,
-              public text:string){}
+  constructor(type:string,
+              text:string){
+    this.type = type;
+    this.text = text;
+  }
 }
