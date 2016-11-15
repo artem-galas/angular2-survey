@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Option} from '../../../shared/classes/option';
-import {Question} from '../../../shared/classes/question';
+import {Option} from '../classes/option';
+import {Question} from '../classes/question';
 
 @Component({
   selector: 'survey-field',
@@ -13,17 +13,23 @@ export class FieldComponent implements OnInit {
   public type;
   @Input()
   public question: Question;
-
-  ngOnInit() {
-    this.question.options = [new Option('')];
-    this.options = this.question.options;
-  }
+  @Input()
+  public show;
 
   public options:Option[];
+
+  ngOnInit() {
+    if (!this.question.options) {
+      this.options = [new Option('')];
+    } else {
+      this.options = this.question.options;
+    }
+  }
 
   public addOption() {
     let option = new Option('');
     this.options.push(option);
+    this.question.options = this.options;
   }
 
 }

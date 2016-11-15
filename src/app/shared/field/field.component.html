@@ -1,0 +1,56 @@
+<div [ngSwitch]="type">
+  <md-input *ngSwitchCase="'Short Answer'" class="input-block" [disabled]="!show" [placeholder]="type" [(ngModel)]="question.answer"></md-input>
+  <md-input *ngSwitchCase="'Paragraph'" class="input-block" [disabled]="!show" [placeholder]="type" [(ngModel)]="question.answer"></md-input>
+
+  <div *ngSwitchCase="'One from list'" class="radio-wrapper">
+    <md-radio-group [disabled]="!show" [(ngModel)]="question.answer">
+      <md-radio-button *ngFor="let option of options; let i = index" [value]="option.text">
+        <md-input floatingPlaceholder="false"
+                  placeholder="Option {{i+1}}"
+                  [(ngModel)]="option.text"
+                  (keyup.enter)="addOption()"
+                  [disabled]="show"></md-input>
+      </md-radio-button>
+    </md-radio-group>
+    <button *ngIf="!show" md-button color="primary" (click)="addOption()">Add option</button>
+  </div>
+
+  <div *ngSwitchCase="'Checkboxes'" class="checkbox-wrapper">
+    <md-checkbox *ngFor="let option of options; let i = index">
+      <md-input floatingPlaceholder="false"
+                placeholder="Option {{i+1}}"
+                [(ngModel)]="option.text"
+                (keyup.enter)="addOption()"
+                [disabled]="show"></md-input>
+    </md-checkbox>
+    <button *ngIf="!show" md-button color="primary" (click)="addOption()">Add option</button>
+  </div>
+
+  <div *ngSwitchCase="'Select box'" class="select-wrapper">
+    <ol *ngIf="!show">
+      <li *ngFor="let option of options; let i = index">
+        <md-input floatingPlaceholder="false"
+                  placeholder="Option {{i+1}}"
+                  [(ngModel)]="option.text"
+                  (keyup.enter)="addOption()"
+                  [disabled]="show"></md-input>
+      </li>
+    </ol>
+    <select *ngIf="show" [(ngModel)]="question.answer">
+      <option *ngFor="let option of options"
+              [value]="option.text">{{option.text}}</option>
+    </select>
+    <button *ngIf="!show" md-button color="primary" (click)="addOption()">Add option</button>
+  </div>
+
+  <div *ngSwitchCase="'Date'" class="date-time">
+    <md-input placeholder="DD.MM.YYYY" [disabled]="!show"></md-input>
+    <md-icon>insert_invitation</md-icon>
+  </div>
+
+  <div *ngSwitchCase="'Time'" class="date-time">
+    <md-input placeholder="Time" [disabled]="!show"></md-input>
+    <md-icon>access_time</md-icon>
+  </div>
+
+</div>

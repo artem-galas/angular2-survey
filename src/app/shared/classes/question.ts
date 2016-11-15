@@ -5,7 +5,11 @@ export class Question {
   text: string;
   image?: string;
   options?: Option[];
+  answer?: any;
 
-  constructor(public type:string,
-              public text:string){}
+  constructor(type:string,
+              text:string){
+    this.type = type;
+    this.text = text;
+  }
 }
