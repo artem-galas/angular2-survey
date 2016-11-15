@@ -16,19 +16,20 @@ export class FieldComponent implements OnInit {
   @Input()
   public show;
 
+  public options:Option[];
+
   ngOnInit() {
-    if (!this.question.options.length > 0) {
-      this.question.options = [new Option('')];
+    if (!this.question.options) {
+      this.options = [new Option('')];
     } else {
       this.options = this.question.options;
     }
   }
 
-  public options:Option[];
-
   public addOption() {
     let option = new Option('');
     this.options.push(option);
+    this.question.options = this.options;
   }
 
 }

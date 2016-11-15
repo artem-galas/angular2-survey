@@ -27,7 +27,7 @@
   </div>
 
   <div *ngSwitchCase="'Select box'" class="select-wrapper">
-    <ol>
+    <ol *ngIf="!show">
       <li *ngFor="let option of options; let i = index">
         <md-input floatingPlaceholder="false"
                   placeholder="Option {{i+1}}"
@@ -36,6 +36,10 @@
                   [disabled]="show"></md-input>
       </li>
     </ol>
+    <select *ngIf="show" [(ngModel)]="question.answer">
+      <option *ngFor="let option of options"
+              [value]="option.text">{{option.text}}</option>
+    </select>
     <button *ngIf="!show" md-button color="primary" (click)="addOption()">Add option</button>
   </div>
 
