@@ -13,11 +13,23 @@ export class SurveyService {
     return this._http
       .get(`${environment.API}/surveys`)
       .map(res => res.json())
+      .catch(error => Observable.of(error))
   }
 
   getSurvey(id): Observable<Survey> {
     return this._http
       .get(`${environment.API}/surveys/${id}`)
-      .map(res => res.json());
+      .map(res => res.json())
+      .catch(error => Observable.of(error))
+  }
+
+  createSurvey(form): Observable<Survey> {
+    let data = {
+      survey: form
+    }
+    return this._http
+      .post(`${environment.API}/surveys`, data)
+      .map(res => res.json())
+      .catch(error => Observable.of(error))
   }
 }

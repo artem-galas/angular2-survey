@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Question } from "../../shared/classes/question";
 import { FieldComponent } from '../../shared/field/field.component';
 import { Survey } from '../../shared/classes/survey';
+import {SurveyService} from "../../shared/services/survey.service";
 
 @Component({
   selector: 'survey-form-new',
@@ -31,7 +32,7 @@ export class FormNewComponent {
 
   public form:Survey;
 
-  constructor() {
+  constructor(private _surveyService:SurveyService) {
     this.form = new Survey('');
     this.form.questions = this.questions;
   }
@@ -44,6 +45,13 @@ export class FormNewComponent {
   public saveForm() {
     console.log(this.questions);
     console.log(this.form);
+
+    this._surveyService.createSurvey(this.form)
+      .subscribe(
+        res => console.log(res),
+        error=> console.log(error)
+      )
+
   }
 
 }

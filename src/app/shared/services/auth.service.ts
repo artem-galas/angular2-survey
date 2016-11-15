@@ -25,11 +25,6 @@ export class AuthService {
     };
     return this._http
       .post(`${environment.API}/auth`, data);
-    // this._tokenService.registerAccount(
-    //   user.email,
-    //   user.password,
-    //   user.passwordConfirmation
-    // )
   }
 
 }
