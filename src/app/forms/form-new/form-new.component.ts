@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Question } from "../../shared/classes/question";
 import { FieldComponent } from '../../shared/field/field.component';
 import { Survey } from '../../shared/classes/survey';
-import {SurveyService} from "../../shared/services/survey.service";
+import {SurveyService} from '../../shared/services/survey.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'survey-form-new',
@@ -32,7 +33,7 @@ export class FormNewComponent {
 
   public form:Survey;
 
-  constructor(private _surveyService:SurveyService) {
+  constructor(private _surveyService:SurveyService, private router: Router) {
     this.form = new Survey('');
     this.form.questions = this.questions;
   }
@@ -48,7 +49,10 @@ export class FormNewComponent {
 
     this._surveyService.createSurvey(this.form)
       .subscribe(
-        res => console.log(res),
+        res => {
+          this.router.navigate(['/my-forms']);
+          console.log(res)
+        },
         error=> console.log(error)
       )
 
